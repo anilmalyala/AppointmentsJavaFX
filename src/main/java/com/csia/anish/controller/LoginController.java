@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -50,12 +51,12 @@ public class LoginController extends BaseController implements Initializable {
 
         Optional<User> user=userService.validateLogin(userId,password);
 
-        if(!user.isEmpty()) {
+        if(user!=null && !user.isEmpty()) {
             System.out.println("User Logged in");
             Session session=Session.createSession(user.get());
             displayHomePage(actionEvent);
         }else {
-            System.out.println("Invalid User");
+            showAlert("Invalid Credentials", Alert.AlertType.ERROR);
         }
     }
 

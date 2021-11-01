@@ -22,26 +22,28 @@ public abstract class BaseController {
     ApplicationContext applicationContext;
 
     public void displayHomePage(ActionEvent actionEvent) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("homepage.fxml"));
-        System.out.println(loader.getLocation());
-        loader.setControllerFactory(applicationContext::getBean);
-
-        //  Parent addProductParent = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-        Parent addProductParent = loader.load();
-        HomePageController controller=loader.getController();
-        controller.updateHomeText();
-        Scene addProductScene = new Scene(addProductParent);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(addProductScene);
-        window.show();
+        HomePageController homePageController= (HomePageController) loadFXML("homepage.fxml",actionEvent);
+        homePageController.updateHomeText();
     }
 
     public void showAlert(String message,Alert.AlertType alertType){
         Alert alert=new Alert(alertType);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public Object loadFXML(String path, ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(path));
+        System.out.println(loader.getLocation());
+        loader.setControllerFactory(applicationContext::getBean);
+        Parent addProductParent = loader.load();
+        Scene addProductScene = new Scene(addProductParent);
+        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(addProductScene);
+        window.show();
+        return loader.getController();
+
     }
 
 }

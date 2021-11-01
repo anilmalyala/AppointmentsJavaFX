@@ -57,18 +57,8 @@ public class ViewStudentController extends BaseController implements Initializab
 
     public void updateStudent(ActionEvent actionEvent) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("updateStudent.fxml"));
-        loader.setControllerFactory(applicationContext::getBean);
-        System.out.println(loader.getLocation());
-
-        //  Parent addProductParent = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-        Parent addProductParent = loader.load();
-        ModifyStudentController controller=loader.getController();
+        ModifyStudentController controller= (ModifyStudentController) loadFXML("updateStudent.fxml",actionEvent);
         controller.setStudentId(studentsTable.getSelectionModel().getSelectedItem().getStudentId());
-        Scene addStudentScene = new Scene(addProductParent);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(addStudentScene);
-        window.show();
+
     }
 }

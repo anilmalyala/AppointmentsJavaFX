@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 @Component
-public class AddNewStudent extends BaseController implements Initializable{
+public class AddNewStudentController extends BaseController implements Initializable{
     @FXML
     public DatePicker dob;
     @FXML
@@ -49,6 +49,7 @@ public class AddNewStudent extends BaseController implements Initializable{
         student.setEmailAddress(emailAddress.getText());
         student.setClassDetails(classDetails.getText());
         student.setDateOfBirth(dob.getValue().toString());
+        student.setCurriculum(curriculum.getSelectionModel().getSelectedItem().toString());
 
         if(studentService.createStudent(student)!=null){
             showAlert("Successfully created Student", Alert.AlertType.INFORMATION);
@@ -56,7 +57,7 @@ public class AddNewStudent extends BaseController implements Initializable{
             emailAddress.setText("");
             classDetails.setText("");
             dob.setValue(null);
-            //curriculum.
+            curriculum.getSelectionModel().select(-1);
         }else {
             showAlert("Error while creating Student", Alert.AlertType.ERROR);
         }

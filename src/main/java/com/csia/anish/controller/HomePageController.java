@@ -35,55 +35,15 @@ public class HomePageController extends BaseController implements Initializable 
     }
 
     public void addStudent(ActionEvent actionEvent) throws IOException {
-
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("addStudent.fxml"));
-        loader.setControllerFactory(applicationContext::getBean);
-        System.out.println(loader.getLocation());
-
-        //  Parent addProductParent = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-        Parent addProductParent = loader.load();
-       // AddNewStudent controller=loader.getController();
-       // controller.init();
-        Scene addStudentScene = new Scene(addProductParent);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(addStudentScene);
-        window.show();
-
+        loadFXML("addStudent.fxml",actionEvent);
     }
 
     public void bookAppointment(ActionEvent actionEvent) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("addAppointments.fxml"));
-        loader.setControllerFactory(applicationContext::getBean);
-        System.out.println(loader.getLocation());
-
-        //  Parent addProductParent = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-        Parent addProductParent = loader.load();
-        // AddNewStudent controller=loader.getController();
-        // controller.init();
-        Scene addStudentScene = new Scene(addProductParent);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(addStudentScene);
-        window.show();
+        loadFXML("addAppointments.fxml",actionEvent);
     }
 
     public void modifyStudent(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("viewStudents.fxml"));
-        loader.setControllerFactory(applicationContext::getBean);
-        System.out.println(loader.getLocation());
-
-        //  Parent addProductParent = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-        Parent addProductParent = loader.load();
-        // AddNewStudent controller=loader.getController();
-        // controller.init();
-        Scene addStudentScene = new Scene(addProductParent);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(addStudentScene);
-        window.show();
+        loadFXML("viewStudents.fxml",actionEvent);
     }
 
     @Override
@@ -92,19 +52,7 @@ public class HomePageController extends BaseController implements Initializable 
     }
 
     public void viewAppointments(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("allAppointment.fxml"));
-        loader.setControllerFactory(applicationContext::getBean);
-        System.out.println(loader.getLocation());
-
-        //  Parent addProductParent = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-        Parent addProductParent = loader.load();
-        // AddNewStudent controller=loader.getController();
-        // controller.init();
-        Scene addStudentScene = new Scene(addProductParent);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(addStudentScene);
-        window.show();
+        loadFXML("allAppointment.fxml",actionEvent);
     }
 
     public void modifyAppointments(ActionEvent actionEvent) {
@@ -112,18 +60,6 @@ public class HomePageController extends BaseController implements Initializable 
 
     public void logout(ActionEvent actionEvent) throws IOException {
         Session.logout();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("login.fxml"));
-        loader.setControllerFactory(applicationContext::getBean);
-        System.out.println(loader.getLocation());
-
-        //  Parent addProductParent = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-        Parent addProductParent = loader.load();
-        // AddNewStudent controller=loader.getController();
-        // controller.init();
-        Scene addStudentScene = new Scene(addProductParent);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(addStudentScene);
-        window.show();
+        loadFXML("login.fxml",actionEvent);
     }
 }
