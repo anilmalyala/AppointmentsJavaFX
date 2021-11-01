@@ -6,15 +6,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -46,7 +41,7 @@ public class ViewStudentController extends BaseController implements Initializab
 
         students= FXCollections.observableArrayList();
         List<Student> studentList=studentService.getAllStudents();
-        studentList.forEach(student -> students.add(student));
+        students.addAll(studentList);
         studentId_tc.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         studentName_tc.setCellValueFactory(new PropertyValueFactory<>("name"));
         classDetails_tc.setCellValueFactory(new PropertyValueFactory<>("classDetails"));

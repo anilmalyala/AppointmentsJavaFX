@@ -2,14 +2,13 @@ package com.csia.anish.util;
 
 import com.csia.anish.data.User;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public class Session {
     private static User user;
 
     private Session(User user){
-        this.user=user;
+        Session.user =user;
     }
 
     public static User getUser(){

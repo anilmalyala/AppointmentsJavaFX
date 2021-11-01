@@ -39,10 +39,10 @@ public class CreateAppointmentController extends BaseController implements Initi
     @Autowired
     AppointmentService appointmentService;
 
-    private ObservableList<String> timesList = FXCollections.observableArrayList("9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM");
-    private ObservableList<String> contactList = FXCollections.observableArrayList("Nitya Menon", "Madeline Allen", "Miles Allen", "Margaux Allen");
+    private final ObservableList<String> timesList = FXCollections.observableArrayList("9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM");
+    private final ObservableList<String> contactList = FXCollections.observableArrayList("Nitya Menon", "Madeline Allen", "Miles Allen", "Margaux Allen");
     //private ObservableList<String> locationList = FXCollections.observableArrayList("New York", "Boise");
-    private ObservableList<String> typeList = FXCollections.observableArrayList("Subject Related", "Co Circular", "Exam Related", "Others");
+    private final ObservableList<String> typeList = FXCollections.observableArrayList("Subject Related", "Co Circular", "Exam Related", "Others");
     private ObservableList<Student> students;
 
     @Override
@@ -50,7 +50,7 @@ public class CreateAppointmentController extends BaseController implements Initi
 
         students= FXCollections.observableArrayList();
         List<Student> studentList=studentService.getAllStudents();
-        studentList.forEach(student -> students.add(student));
+        students.addAll(studentList);
         id.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         studentsTable.setItems(students);

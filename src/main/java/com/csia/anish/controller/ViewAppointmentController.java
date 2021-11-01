@@ -1,10 +1,7 @@
 package com.csia.anish.controller;
 
-import com.csia.anish.data.Appointment;
 import com.csia.anish.data.AppointmentDTO;
-import com.csia.anish.data.Student;
 import com.csia.anish.service.AppointmentService;
-import com.csia.anish.service.StudentService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
@@ -48,10 +46,10 @@ public class ViewAppointmentController extends BaseController implements Initial
 
 
 
-    private ObservableList<String> timesList = FXCollections.observableArrayList("9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM");
-    private ObservableList<String> contactList = FXCollections.observableArrayList("Nitya Menon", "Madeline Allen", "Miles Allen", "Margaux Allen");
+    private final ObservableList<String> timesList = FXCollections.observableArrayList("9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM");
+    private final ObservableList<String> contactList = FXCollections.observableArrayList("Nitya Menon", "Madeline Allen", "Miles Allen", "Margaux Allen");
     //private ObservableList<String> locationList = FXCollections.observableArrayList("New York", "Boise");
-    private ObservableList<String> typeList = FXCollections.observableArrayList("Subject Related", "Co Circular", "Exam Related", "Others");
+    private final ObservableList<String> typeList = FXCollections.observableArrayList("Subject Related", "Co Circular", "Exam Related", "Others");
     private ObservableList<AppointmentDTO> appointmentObservableList;
 
     @Override
